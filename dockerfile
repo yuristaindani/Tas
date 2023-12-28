@@ -15,3 +15,6 @@ RUN jekyll build --future
 
 # Set the entry point to serve the Jekyll site (optional)
 ENTRYPOINT ["jekyll", "serve"]
+
+# Expose the port that Jekyll will run on
+EXPOSE 4000
