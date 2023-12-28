@@ -8,13 +8,10 @@ WORKDIR /srv/jekyll
 COPY . .
 
 # Set permissions for the Jekyll site directory
-RUN chmod -R 777 /srv/jekyll
+RUN chown -R jekyll:jekyll /srv/jekyll
 
 # Build the Jekyll site
 RUN jekyll build --future
 
 # Set the entry point to serve the Jekyll site (optional)
-# ENTRYPOINT ["jekyll", "serve"]
-
-# The default command to run when the container starts
-CMD ["echo", "Docker container is running"]
+ENTRYPOINT ["jekyll", "serve"]
