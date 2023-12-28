@@ -31,21 +31,21 @@ jobs:
         tags: yuristaa/belajar-ci-cd:latest
   
   deploy:
-  runs-on: ubuntu-latest
-  needs: build
+    runs-on: ubuntu-latest
+    needs: build
 
-  steps:
-  - name: Checkout code
-    uses: actions/checkout@v3
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-  - name: Deploy to Production
-    run: |
-      # Stop and remove existing container
-      docker stop my-app-container || true
-      docker rm my-app-container || true
+    - name: Deploy to Production
+      run: |
+        # Stop and remove existing container
+        docker stop my-app-container || true
+        docker rm my-app-container || true
 
-      # Pull the latest Docker image
-      docker pull yuristaa/belajar-ci-cd:latest
+        # Pull the latest Docker image
+        docker pull yuristaa/belajar-ci-cd:latest
 
-      # Run the new container
-      docker run -d --name my-app-container -p 80:80 yuristaa/belajar-ci-cd:latest
+        # Run the new container
+        docker run -d --name my-app-container -p 80:80 yuristaa/belajar-ci-cd:latest
